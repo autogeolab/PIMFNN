@@ -155,14 +155,14 @@ lfmodel.load_state_dict(torch.load(lfpath))
 lfmodel.eval()
 
 # Load dual-fidelity model
-mfpath = "mfdfmodel-cowden-['CM2' 'CM9' 'CM3' 'CL2'].pt"
+mfpath = "dfnn.pt"
 print(f"Loading DFNN model from {mfpath}")
 model = MFDF(lfmodel, 128)
 model.load_state_dict(torch.load(mfpath))
 model.eval()
 
 # Load tri-fidelity model
-fpath = "fmodel-cowden-['CS2' 'CS3' 'CS4' 'CM2' 'CM9' 'CM3' 'CL2']-1-0.04.pt"
+fpath = "tfnn.pt"
 print(f"Loading TFNN model from {fpath}")
 fmodel = MFDF(model, 256)
 fmodel.load_state_dict(torch.load(fpath))
